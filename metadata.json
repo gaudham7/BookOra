@@ -1,0 +1,6 @@
+{
+  "name": "BookOra",
+  "description": "An intelligent home for readers, combining premium discovery, social shelves, real-time AI book analysis, a character explorer, and an interactive AI librarian.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

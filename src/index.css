@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Merriweather", Georgia, serif;
+  
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-text: var(--brand-text);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-card: var(--brand-card);
+  --color-brand-card-bg: var(--brand-card-bg);
+  --color-brand-border: var(--brand-border);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-hover: var(--brand-accent-hover);
+  --color-brand-accent-text: var(--brand-accent-text);
+  --color-brand-accent-glow: var(--brand-accent-glow);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 120, 0.3);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+.animate-text-shimmer {
+  background-size: 200% auto;
+  animation: textShimmer 6s linear infinite;
+}
+
+/* ----------------------------------------------------
+   THEME CONFIGURATIONS (CSS Variables)
+   ---------------------------------------------------- */
+
+:root, .theme-obsidian {
+  --brand-bg: #0c0a09; /* stone-950 */
+  --brand-text: #f5f5f4; /* stone-100 */
+  --brand-muted: #78716c; /* stone-500 */
+  --brand-card: #1c1917; /* stone-900 */
+  --brand-card-bg: rgba(28, 25, 23, 0.6);
+  --brand-border: #2e2a24; /* stone-800 */
+  --brand-accent: #f59e0b; /* amber-500 */
+  --brand-accent-hover: #d97706; /* amber-600 */
+  --brand-accent-text: #000000;
+  --brand-accent-glow: rgba(245, 158, 11, 0.15);
+}
+
+.theme-parchment {
+  --brand-bg: #f9f5eb; /* Vintage ivory paper */
+  --brand-text: #2c251e; /* Deep charcoal warm */
+  --brand-muted: #6e6558; /* Muted brown-gray */
+  --brand-card: #f2ebd9; /* Warmer paper card */
+  --brand-card-bg: rgba(242, 235, 217, 0.8);
+  --brand-border: #e6dcbf; /* Warm card borders */
+  --brand-accent: #b45309; /* amber-700 / sepia accent */
+  --brand-accent-hover: #92400e;
+  --brand-accent-text: #ffffff;
+  --brand-accent-glow: rgba(180, 83, 9, 0.1);
+}
+
+.theme-forest {
+  --brand-bg: #04241d; /* Deep moss green */
+  --brand-text: #e6f4ea; /* Soft mint text */
+  --brand-muted: #629c87; /* Sage */
+  --brand-card: #083b30; /* Darker green card */
+  --brand-card-bg: rgba(8, 59, 48, 0.6);
+  --brand-border: #114d3f;
+  --brand-accent: #10b981; /* emerald-500 */
+  --brand-accent-hover: #059669;
+  --brand-accent-text: #011c16;
+  --brand-accent-glow: rgba(16, 185, 129, 0.15);
+}
+
+.theme-ocean {
+  --brand-bg: #071120; /* Midnight navy */
+  --brand-text: #e2e8f0; /* Soft slate text */
+  --brand-muted: #64748b; /* Cool gray */
+  --brand-card: #0c1c30; /* Navy card */
+  --brand-card-bg: rgba(12, 28, 48, 0.65);
+  --brand-border: #162d4a;
+  --brand-accent: #38bdf8; /* sky-400 */
+  --brand-accent-hover: #0ea5e9;
+  --brand-accent-text: #051426;
+  --brand-accent-glow: rgba(56, 189, 248, 0.15);
+}
+
+.theme-amethyst {
+  --brand-bg: #141124; /* Deep purple */
+  --brand-text: #e9e3f8; /* Pale lavender text */
+  --brand-muted: #8a7eb4; /* Muted slate purple */
+  --brand-card: #1c1833; /* Violet-stone card */
+  --brand-card-bg: rgba(28, 24, 51, 0.65);
+  --brand-border: #2c254d;
+  --brand-accent: #a78bfa; /* violet-400 */
+  --brand-accent-hover: #8b5cf6;
+  --brand-accent-text: #0d0a1a;
+  --brand-accent-glow: rgba(167, 139, 250, 0.15);
+}
+
+.theme-cyberpunk {
+  --brand-bg: #050508; /* Deep neon dark */
+  --brand-text: #e2e8f0;
+  --brand-muted: #64748b;
+  --brand-card: #0c0a12;
+  --brand-card-bg: rgba(12, 10, 18, 0.8);
+  --brand-border: #221a36;
+  --brand-accent: #ec4899; /* pink-500 */
+  --brand-accent-hover: #db2777;
+  --brand-accent-text: #ffffff;
+  --brand-accent-glow: rgba(236, 72, 153, 0.2);
+}
+
+.theme-alabaster {
+  --brand-bg: #fbfbfb; /* Clean alabaster off-white */
+  --brand-text: #18181b; /* Zinc 900 */
+  --brand-muted: #71717a; /* Zinc 500 */
+  --brand-card: #f4f4f5; /* Zinc 100 card */
+  --brand-card-bg: rgba(244, 244, 245, 0.85);
+  --brand-border: #e4e4e7; /* Zinc 200 */
+  --brand-accent: #0284c7; /* Sky 600 */
+  --brand-accent-hover: #0369a1; /* Sky 700 */
+  --brand-accent-text: #ffffff;
+  --brand-accent-glow: rgba(2, 132, 199, 0.1);
+}
+
+.theme-solis {
+  --brand-bg: #fdfbf7; /* Morning warm sun light butter */
+  --brand-text: #3c2f2f; /* Dark cocoa text */
+  --brand-muted: #8e7a75; /* Warm dusty brown */
+  --brand-card: #f7f1e3; /* Soft cream card */
+  --brand-card-bg: rgba(247, 241, 227, 0.85);
+  --brand-border: #ebdcb9; /* Warm sunlit borders */
+  --brand-accent: #d97706; /* Amber 600 */
+  --brand-accent-hover: #b45309; /* Amber 700 */
+  --brand-accent-text: #ffffff;
+  --brand-accent-glow: rgba(217, 119, 6, 0.1);
+}
+
+/* ----------------------------------------------------
+   BACKGROUND DESIGN PATTERNS
+   ---------------------------------------------------- */
+
+.design-vintage-lines {
+  background-image: linear-gradient(rgba(120, 115, 110, 0.05) 1px, transparent 1px);
+  background-size: 100% 2.25rem;
+}
+
+.design-starry-sky {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                    radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 2px),
+                    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 200px 200px, 340px 340px, 460px 460px;
+  background-position: 0 0, 40px 60px, 130px 270px;
+}
+
+.design-academic-grid {
+  background-image: radial-gradient(rgba(120, 115, 110, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.design-cozy-glow {
+  background: radial-gradient(circle at 15% 15%, var(--brand-accent-glow) 0%, transparent 45%),
+              radial-gradient(circle at 85% 85%, var(--brand-accent-glow) 0%, transparent 45%),
+              radial-gradient(circle at 50% 50%, rgba(120, 115, 110, 0.01) 0%, transparent 70%);
+}
+
+/* ----------------------------------------------------
+   READER TYPOGRAPHY OVERRIDES
+   ---------------------------------------------------- */
+
+.reader-serif p, 
+.reader-serif .book-desc, 
+.reader-serif .review-content,
+.reader-serif .ai-analysis,
+.reader-serif blockquote,
+.reader-serif h1, 
+.reader-serif h2, 
+.reader-serif h3 {
+  font-family: "Merriweather", Georgia, serif !important;
+}
+
+/* ----------------------------------------------------
+   GLOBAL MULTI-THEME SELECTOR MAPPINGS
+   (Automatically colors legacy/hardcoded stone themes)
+   ---------------------------------------------------- */
+
+/* Non-default Themes Global Overrides */
+.theme-parchment, .theme-forest, .theme-ocean, .theme-amethyst, .theme-cyberpunk, .theme-alabaster, .theme-solis {
+  background-color: var(--brand-bg);
+  color: var(--brand-text);
+}
+
+.theme-parchment .bg-stone-950, .theme-forest .bg-stone-950, .theme-ocean .bg-stone-950, .theme-amethyst .bg-stone-950, .theme-cyberpunk .bg-stone-950, .theme-alabaster .bg-stone-950, .theme-solis .bg-stone-950,
+.theme-parchment .bg-stone-950\/95, .theme-forest .bg-stone-950\/95, .theme-ocean .bg-stone-950\/95, .theme-amethyst .bg-stone-950\/95, .theme-cyberpunk .bg-stone-950\/95, .theme-alabaster .bg-stone-950\/95, .theme-solis .bg-stone-950\/95,
+.theme-parchment .bg-stone-950\/80, .theme-forest .bg-stone-950\/80, .theme-ocean .bg-stone-950\/80, .theme-amethyst .bg-stone-950\/80, .theme-cyberpunk .bg-stone-950\/80, .theme-alabaster .bg-stone-950\/80, .theme-solis .bg-stone-950\/80,
+.theme-parchment .bg-black, .theme-forest .bg-black, .theme-ocean .bg-black, .theme-amethyst .bg-black, .theme-cyberpunk .bg-black, .theme-alabaster .bg-black, .theme-solis .bg-black {
+  background-color: var(--brand-bg) !important;
+}
+
+.theme-parchment .bg-stone-900, .theme-forest .bg-stone-900, .theme-ocean .bg-stone-900, .theme-amethyst .bg-stone-900, .theme-cyberpunk .bg-stone-900, .theme-alabaster .bg-stone-900, .theme-solis .bg-stone-900,
+.theme-parchment .bg-stone-900\/60, .theme-forest .bg-stone-900\/60, .theme-ocean .bg-stone-900\/60, .theme-amethyst .bg-stone-900\/60, .theme-cyberpunk .bg-stone-900\/60, .theme-alabaster .bg-stone-900\/60, .theme-solis .bg-stone-900\/60,
+.theme-parchment .bg-stone-900\/40, .theme-forest .bg-stone-900\/40, .theme-ocean .bg-stone-900\/40, .theme-amethyst .bg-stone-900\/40, .theme-cyberpunk .bg-stone-900\/40, .theme-alabaster .bg-stone-900\/40, .theme-solis .bg-stone-900\/40,
+.theme-parchment .bg-stone-900\/80, .theme-forest .bg-stone-900\/80, .theme-ocean .bg-stone-900\/80, .theme-amethyst .bg-stone-900\/80, .theme-cyberpunk .bg-stone-900\/80, .theme-alabaster .bg-stone-900\/80, .theme-solis .bg-stone-900\/80,
+.theme-parchment .bg-stone-900\/50, .theme-forest .bg-stone-900\/50, .theme-ocean .bg-stone-900\/50, .theme-amethyst .bg-stone-900\/50, .theme-cyberpunk .bg-stone-900\/50, .theme-alabaster .bg-stone-900\/50, .theme-solis .bg-stone-900\/50,
+.theme-parchment .bg-stone-850, .theme-forest .bg-stone-850, .theme-ocean .bg-stone-850, .theme-amethyst .bg-stone-850, .theme-cyberpunk .bg-stone-850, .theme-alabaster .bg-stone-850, .theme-solis .bg-stone-850 {
+  background-color: var(--brand-card-bg) !important;
+}
+
+.theme-parchment .border-stone-800, .theme-forest .border-stone-800, .theme-ocean .border-stone-800, .theme-amethyst .border-stone-800, .theme-cyberpunk .border-stone-800, .theme-alabaster .border-stone-800, .theme-solis .border-stone-800,
+.theme-parchment .border-stone-850, .theme-forest .border-stone-850, .theme-ocean .border-stone-850, .theme-amethyst .border-stone-850, .theme-cyberpunk .border-stone-850, .theme-alabaster .border-stone-850, .theme-solis .border-stone-850,
+.theme-parchment .border-stone-900, .theme-forest .border-stone-900, .theme-ocean .border-stone-900, .theme-amethyst .border-stone-900, .theme-cyberpunk .border-stone-900, .theme-alabaster .border-stone-900, .theme-solis .border-stone-900 {
+  border-color: var(--brand-border) !important;
+}
+
+.theme-parchment .text-stone-100, .theme-forest .text-stone-100, .theme-ocean .text-stone-100, .theme-amethyst .text-stone-100, .theme-cyberpunk .text-stone-100, .theme-alabaster .text-stone-100, .theme-solis .text-stone-100,
+.theme-parchment .text-stone-200, .theme-forest .text-stone-200, .theme-ocean .text-stone-200, .theme-amethyst .text-stone-200, .theme-cyberpunk .text-stone-200, .theme-alabaster .text-stone-200, .theme-solis .text-stone-200,
+.theme-parchment .text-stone-300, .theme-forest .text-stone-300, .theme-ocean .text-stone-300, .theme-amethyst .text-stone-300, .theme-cyberpunk .text-stone-300, .theme-alabaster .text-stone-300, .theme-solis .text-stone-300,
+.theme-parchment .text-white, .theme-forest .text-white, .theme-ocean .text-white, .theme-amethyst .text-white, .theme-cyberpunk .text-white, .theme-alabaster .text-white, .theme-solis .text-white {
+  color: var(--brand-text) !important;
+}
+
+.theme-parchment .text-stone-400, .theme-forest .text-stone-400, .theme-ocean .text-stone-400, .theme-amethyst .text-stone-400, .theme-cyberpunk .text-stone-400, .theme-alabaster .text-stone-400, .theme-solis .text-stone-400,
+.theme-parchment .text-stone-500, .theme-forest .text-stone-500, .theme-ocean .text-stone-500, .theme-amethyst .text-stone-500, .theme-cyberpunk .text-stone-500, .theme-alabaster .text-stone-500, .theme-solis .text-stone-500,
+.theme-parchment .text-stone-600, .theme-forest .text-stone-600, .theme-ocean .text-stone-600, .theme-amethyst .text-stone-600, .theme-cyberpunk .text-stone-600, .theme-alabaster .text-stone-600, .theme-solis .text-stone-600 {
+  color: var(--brand-muted) !important;
+}
+
+.theme-parchment .text-amber-500, .theme-forest .text-amber-500, .theme-ocean .text-amber-500, .theme-amethyst .text-amber-500, .theme-cyberpunk .text-amber-500, .theme-alabaster .text-amber-500, .theme-solis .text-amber-500,
+.theme-parchment .text-amber-400, .theme-forest .text-amber-400, .theme-ocean .text-amber-400, .theme-amethyst .text-amber-400, .theme-cyberpunk .text-amber-400, .theme-alabaster .text-amber-400, .theme-solis .text-amber-400 {
+  color: var(--brand-accent) !important;
+}
+
+.theme-parchment .bg-amber-500, .theme-forest .bg-amber-500, .theme-ocean .bg-amber-500, .theme-amethyst .bg-amber-500, .theme-cyberpunk .bg-amber-500, .theme-alabaster .bg-amber-500, .theme-solis .bg-amber-500 {
+  background-color: var(--brand-accent) !important;
+  color: var(--brand-accent-text) !important;
+}
+
+.theme-parchment .hover\:bg-amber-400:hover, .theme-forest .hover\:bg-amber-400:hover, .theme-ocean .hover\:bg-amber-400:hover, .theme-amethyst .hover\:bg-amber-400:hover, .theme-cyberpunk .hover\:bg-amber-400:hover, .theme-alabaster .hover\:bg-amber-400:hover, .theme-solis .hover\:bg-amber-400:hover {
+  background-color: var(--brand-accent-hover) !important;
+}
+
+.theme-parchment .border-amber-500\/20, .theme-forest .border-amber-500\/20, .theme-ocean .border-amber-500\/20, .theme-amethyst .border-amber-500\/20, .theme-cyberpunk .border-amber-500\/20, .theme-alabaster .border-amber-500\/20, .theme-solis .border-amber-500\/20 {
+  border-color: var(--brand-border) !important;
+}
+
+.theme-parchment .bg-amber-500\/10, .theme-forest .bg-amber-500\/10, .theme-ocean .bg-amber-500\/10, .theme-amethyst .bg-amber-500\/10, .theme-cyberpunk .bg-amber-500\/10, .theme-alabaster .bg-amber-500\/10, .theme-solis .bg-amber-500\/10 {
+  background-color: var(--brand-accent-glow) !important;
+}
+
+.theme-parchment .text-amber-500\/90, .theme-forest .text-amber-500\/90, .theme-ocean .text-amber-500\/90, .theme-amethyst .text-amber-500\/90, .theme-cyberpunk .text-amber-500\/90, .theme-alabaster .text-amber-500\/90, .theme-solis .text-amber-500\/90 {
+  color: var(--brand-accent) !important;
+  opacity: 0.9;
+}
